@@ -2,12 +2,17 @@ import Sidebar from "@/components/sidebar/sidebar";
 import LinkGrid from "@/components/link/link-grid";
 import { folders, links } from "@/lib/mock-data";
 
-export default function Home() {
+export default async function FolderPage(
+  props: PageProps<"/folder/[folderId]">,
+) {
+  const { folderId } = await props.params;
+  const folderLinks = links.filter((link) => link.folderId === folderId);
+
   return (
     <>
       <Sidebar folders={folders} />
       <main className="flex-1 overflow-y-auto p-6">
-        <LinkGrid links={links} />
+        <LinkGrid links={folderLinks} />
       </main>
     </>
   );
