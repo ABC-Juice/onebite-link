@@ -123,7 +123,22 @@ body {
   color: #ffffff;
 }
 
-/* ---- Sidebar delete-folder button ---- */
+/* ---- Sidebar folder action buttons (edit/delete) ---- */
+.edit-folder-btn {
+  color: var(--text-sub);
+}
+.edit-folder-btn:hover {
+  color: var(--accent);
+  background: var(--divider);
+}
+.edit-folder-btn-active {
+  color: rgba(255, 255, 255, 0.7);
+}
+.edit-folder-btn-active:hover {
+  color: #6ab8ff;
+  background: rgba(255, 255, 255, 0.16);
+}
+
 .delete-folder-btn {
   color: var(--text-sub);
 }
