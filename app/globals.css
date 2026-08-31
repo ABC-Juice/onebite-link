@@ -64,6 +64,14 @@ body {
   background: var(--surface-hover);
 }
 
+.btn-danger {
+  background: var(--error);
+  color: #ffffff;
+}
+.btn-danger:hover {
+  background: #e0352b;
+}
+
 /* ---- Inputs / selects ---- */
 .input-field {
   border: 1px solid var(--border);
@@ -113,6 +121,22 @@ body {
 .nav-item-active .badge {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
+}
+
+/* ---- Sidebar delete-folder button ---- */
+.delete-folder-btn {
+  color: var(--text-sub);
+}
+.delete-folder-btn:hover {
+  color: var(--error);
+  background: var(--divider);
+}
+.delete-folder-btn-active {
+  color: rgba(255, 255, 255, 0.7);
+}
+.delete-folder-btn-active:hover {
+  color: #ff6961;
+  background: rgba(255, 255, 255, 0.16);
 }
 
 /* ---- Translucent top nav ---- */
