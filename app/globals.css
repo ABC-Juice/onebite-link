@@ -55,6 +55,15 @@ body {
   text-decoration: underline;
 }
 
+.btn-outline {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+.btn-outline:hover {
+  background: var(--surface-hover);
+}
+
 /* ---- Inputs / selects ---- */
 .input-field {
   border: 1px solid var(--border);
@@ -111,4 +120,13 @@ body {
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+/* ---- Modal ---- */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.32);
+}
+.modal-panel {
+  background: var(--background);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }

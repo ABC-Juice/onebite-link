@@ -1,6 +1,6 @@
 import Sidebar from "@/components/sidebar/sidebar";
 import LinkGrid from "@/components/link/link-grid";
-import { folders, links } from "@/lib/mock-data";
+import { links } from "@/lib/mock-data";
 
 export default async function FolderPage(
   props: PageProps<"/folder/[folderId]">,
@@ -10,7 +10,7 @@ export default async function FolderPage(
 
   return (
     <>
-      <Sidebar folders={folders} />
+      <Sidebar />
       <main className="flex-1 overflow-y-auto px-8 py-10">
         <LinkGrid links={folderLinks} />
       </main>

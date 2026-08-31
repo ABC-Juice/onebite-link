@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/header/header";
+import { FolderProvider } from "@/lib/folder-store";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,8 +26,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex h-full flex-col bg-[var(--background)] text-[var(--text)]">
-        <Header />
-        <div className="flex flex-1 overflow-hidden">{children}</div>
+        <FolderProvider>
+          <Header />
+          <div className="flex flex-1 overflow-hidden">{children}</div>
+        </FolderProvider>
       </body>
     </html>
   );
