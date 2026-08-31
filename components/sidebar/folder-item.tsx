@@ -12,14 +12,12 @@ export default function FolderItem({ folder }: { folder: Folder }) {
     <Link
       href={`/folder/${folder.id}`}
       aria-current={isActive ? "true" : undefined}
-      className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors ${
-        isActive
-          ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50"
-          : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-50"
+      className={`nav-item flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm ${
+        isActive ? "nav-item-active" : ""
       }`}
     >
       <span className="truncate">{folder.name}</span>
-      <span className="text-xs text-zinc-400 dark:text-zinc-500">
+      <span className="badge rounded-full px-2 py-0.5 text-[11px] leading-none">
         {folder.linkCount}
       </span>
     </Link>

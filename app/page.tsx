@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Sidebar folders={folders} />
-      <main className="flex-1 overflow-y-auto p-6">
+      <main className="flex-1 overflow-y-auto px-8 py-10">
         <LinkGrid links={links} />
       </main>
     </>

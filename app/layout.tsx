@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex h-full flex-col bg-zinc-50 dark:bg-black">
+      <body className="flex h-full flex-col bg-[var(--background)] text-[var(--text)]">
         <Header />
         <div className="flex flex-1 overflow-hidden">{children}</div>
       </body>

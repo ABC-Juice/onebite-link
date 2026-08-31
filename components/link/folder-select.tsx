@@ -5,25 +5,33 @@ export default function FolderSelect({ folders }: { folders: Folder[] }) {
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor="folder"
-        className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
+        className="text-sm font-medium text-[var(--text)]"
       >
         폴더
       </label>
-      <select
-        id="folder"
-        name="folderId"
-        defaultValue=""
-        className="h-11 rounded-lg border border-zinc-200 bg-white px-3 text-sm text-zinc-900 outline-none focus:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:focus:border-zinc-600"
-      >
-        <option value="" disabled>
-          폴더를 선택하세요
-        </option>
-        {folders.map((folder) => (
-          <option key={folder.id} value={folder.id}>
-            {folder.name}
+      <div className="relative">
+        <select
+          id="folder"
+          name="folderId"
+          defaultValue=""
+          className="input-field h-11 w-full appearance-none rounded-[10px] px-4 pr-9 text-[15px]"
+        >
+          <option value="" disabled>
+            폴더를 선택하세요
           </option>
-        ))}
-      </select>
+          {folders.map((folder) => (
+            <option key={folder.id} value={folder.id}>
+              {folder.name}
+            </option>
+          ))}
+        </select>
+        <span
+          className="pointer-events-none absolute top-1/2 right-3.5 -translate-y-1/2 text-[var(--text-sub)]"
+          aria-hidden
+        >
+          ▾
+        </span>
+      </div>
     </div>
   );
 }

@@ -14,19 +14,19 @@ export default function LinkCard({ link }: { link: LinkItem }) {
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950"
+      className="card-surface group flex flex-col overflow-hidden rounded-xl"
     >
-      <div className="flex aspect-video items-center justify-center bg-zinc-100 text-3xl dark:bg-zinc-900">
+      <div className="flex aspect-video items-center justify-center bg-[var(--divider)] text-3xl">
         🔖
       </div>
       <div className="flex flex-col gap-1 p-4">
-        <h3 className="line-clamp-1 text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+        <h3 className="line-clamp-1 text-[15px] font-semibold text-[var(--text)]">
           {link.title}
         </h3>
-        <p className="line-clamp-2 text-xs text-zinc-500 dark:text-zinc-400">
+        <p className="line-clamp-2 text-[13px] text-[var(--text-sub)]">
           {link.description}
         </p>
-        <span className="mt-1 truncate text-xs text-zinc-400 dark:text-zinc-500">
+        <span className="mt-1 truncate text-[12px] text-[var(--placeholder)]">
           {getHostname(link.url)}
         </span>
       </div>
