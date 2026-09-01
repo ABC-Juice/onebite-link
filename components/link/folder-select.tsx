@@ -14,6 +14,7 @@ export default function FolderSelect({ folders }: { folders: Folder[] }) {
           id="folder"
           name="folderId"
           defaultValue=""
+          required
           className="input-field h-11 w-full appearance-none rounded-[10px] px-4 pr-9 text-[15px]"
         >
           <option value="" disabled>

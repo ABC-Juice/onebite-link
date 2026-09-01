@@ -1,8 +1,12 @@
+"use client";
+
 import Sidebar from "@/components/sidebar/sidebar";
 import LinkGrid from "@/components/link/link-grid";
-import { links } from "@/lib/mock-data";
+import { useLinks } from "@/lib/link-store";
 
 export default function Home() {
+  const { links } = useLinks();
+
   return (
     <>
       <Sidebar />

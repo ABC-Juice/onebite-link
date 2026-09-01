@@ -11,6 +11,7 @@ export default function LinkUrlInput() {
         id="link-url"
         name="url"
         type="url"
+        required
         placeholder="https://example.com"
         className="input-field h-11 rounded-[10px] px-4 text-[15px]"
       />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/header/header";
 import { FolderProvider } from "@/lib/folder-store";
+import { LinkProvider } from "@/lib/link-store";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,8 +28,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex h-full flex-col bg-[var(--background)] text-[var(--text)]">
         <FolderProvider>
-          <Header />
-          <div className="flex flex-1 overflow-hidden">{children}</div>
+          <LinkProvider>
+            <Header />
+            <div className="flex flex-1 overflow-hidden">{children}</div>
+          </LinkProvider>
         </FolderProvider>
       </body>
     </html>

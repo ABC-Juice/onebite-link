@@ -1,18 +1,16 @@
 import Sidebar from "@/components/sidebar/sidebar";
-import LinkGrid from "@/components/link/link-grid";
-import { links } from "@/lib/mock-data";
+import FolderLinkGrid from "@/components/link/folder-link-grid";
 
 export default async function FolderPage(
   props: PageProps<"/folder/[folderId]">,
 ) {
   const { folderId } = await props.params;
-  const folderLinks = links.filter((link) => link.folderId === folderId);
 
   return (
     <>
       <Sidebar />
       <main className="flex-1 overflow-y-auto px-8 py-10">
-        <LinkGrid links={folderLinks} />
+        <FolderLinkGrid folderId={folderId} />
       </main>
     </>
   );

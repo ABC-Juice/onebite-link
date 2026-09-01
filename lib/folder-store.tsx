@@ -15,6 +15,7 @@ type FolderContextValue = {
   addFolder: (name: string) => void;
   renameFolder: (id: string, name: string) => void;
   deleteFolder: (id: string) => void;
+  incrementLinkCount: (id: string) => void;
 };
 
 const FolderContext = createContext<FolderContextValue | null>(null);
@@ -47,9 +48,25 @@ export function FolderProvider({ children }: { children: ReactNode }) {
     setFolders((prev) => prev.filter((folder) => folder.id !== id));
   }, []);
 
+  const incrementLinkCount = useCallback((id: string) => {
+    setFolders((prev) =>
+      prev.map((folder) =>
+        folder.id === id
+          ? { ...folder, linkCount: folder.linkCount + 1 }
+          : folder,
+      ),
+    );
+  }, []);
+
   return (
     <FolderContext.Provider
-      value={{ folders, addFolder, renameFolder, deleteFolder }}
+      value={{
+        folders,
+        addFolder,
+        renameFolder,
+        deleteFolder,
+        incrementLinkCount,
+      }}
     >
       {children}
     </FolderContext.Provider>
