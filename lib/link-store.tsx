@@ -19,9 +19,16 @@ type NewLinkInput = {
   folderId: string;
 };
 
+type LinkUpdateInput = {
+  title: string;
+  description: string;
+  folderId: string;
+};
+
 type LinkContextValue = {
   links: LinkItem[];
   addLink: (input: NewLinkInput) => void;
+  updateLink: (id: string, updates: LinkUpdateInput) => void;
   deleteLink: (id: string) => void;
 };
 
@@ -48,6 +55,23 @@ export function LinkProvider({ children }: { children: ReactNode }) {
     [incrementLinkCount],
   );
 
+  const updateLink = useCallback(
+    (id: string, updates: LinkUpdateInput) => {
+      const target = links.find((link) => link.id === id);
+      if (!target) return;
+
+      setLinks((prev) =>
+        prev.map((link) => (link.id === id ? { ...link, ...updates } : link)),
+      );
+
+      if (updates.folderId !== target.folderId) {
+        incrementLinkCount(updates.folderId);
+        decrementLinkCount(target.folderId);
+      }
+    },
+    [links, incrementLinkCount, decrementLinkCount],
+  );
+
   const deleteLink = useCallback(
     (id: string) => {
       const target = links.find((link) => link.id === id);
@@ -60,7 +84,7 @@ export function LinkProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <LinkContext.Provider value={{ links, addLink, deleteLink }}>
+    <LinkContext.Provider value={{ links, addLink, updateLink, deleteLink }}>
       {children}
     </LinkContext.Provider>
   );

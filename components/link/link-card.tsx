@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import type { LinkItem } from "@/lib/types";
+import PencilIcon from "@/components/icons/pencil-icon";
 import TrashIcon from "@/components/icons/trash-icon";
+import EditLinkModal from "./edit-link-modal";
 import DeleteLinkModal from "./delete-link-modal";
 
 function getHostname(url: string) {
@@ -15,6 +17,7 @@ function getHostname(url: string) {
 
 export default function LinkCard({ link }: { link: LinkItem }) {
   const [thumbnailFailed, setThumbnailFailed] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const showThumbnail = Boolean(link.thumbnail) && !thumbnailFailed;
 
@@ -52,14 +55,30 @@ export default function LinkCard({ link }: { link: LinkItem }) {
           </span>
         </div>
       </a>
-      <button
-        type="button"
-        onClick={() => setIsDeleteModalOpen(true)}
-        aria-label={`${link.title} 링크 삭제`}
-        className="delete-link-btn absolute top-2 right-2 rounded-full p-1.5 opacity-0 transition-opacity group-hover:opacity-100"
-      >
-        <TrashIcon />
-      </button>
+      <div className="absolute top-2 right-2 flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+        <button
+          type="button"
+          onClick={() => setIsEditModalOpen(true)}
+          aria-label={`${link.title} 링크 수정`}
+          className="edit-link-btn rounded-full p-1.5"
+        >
+          <PencilIcon />
+        </button>
+        <button
+          type="button"
+          onClick={() => setIsDeleteModalOpen(true)}
+          aria-label={`${link.title} 링크 삭제`}
+          className="delete-link-btn rounded-full p-1.5"
+        >
+          <TrashIcon />
+        </button>
+      </div>
+      {isEditModalOpen && (
+        <EditLinkModal
+          link={link}
+          onClose={() => setIsEditModalOpen(false)}
+        />
+      )}
       {isDeleteModalOpen && (
         <DeleteLinkModal
           link={link}

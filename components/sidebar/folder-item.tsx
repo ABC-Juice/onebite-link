@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Folder } from "@/lib/types";
+import PencilIcon from "@/components/icons/pencil-icon";
 import TrashIcon from "@/components/icons/trash-icon";
 import EditFolderModal from "./edit-folder-modal";
 import DeleteFolderModal from "./delete-folder-modal";
@@ -69,23 +70,5 @@ export default function FolderItem({ folder }: { folder: Folder }) {
         />
       )}
     </div>
-  );
-}
-
-function PencilIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4"
-      aria-hidden
-    >
-      <path d="M12 20h9" />
-      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
-    </svg>
   );
 }
