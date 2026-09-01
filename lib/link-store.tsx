@@ -22,13 +22,14 @@ type NewLinkInput = {
 type LinkContextValue = {
   links: LinkItem[];
   addLink: (input: NewLinkInput) => void;
+  deleteLink: (id: string) => void;
 };
 
 const LinkContext = createContext<LinkContextValue | null>(null);
 
 export function LinkProvider({ children }: { children: ReactNode }) {
   const [links, setLinks] = useState<LinkItem[]>(initialLinks);
-  const { incrementLinkCount } = useFolders();
+  const { incrementLinkCount, decrementLinkCount } = useFolders();
 
   const addLink = useCallback(
     (input: NewLinkInput) => {
@@ -47,8 +48,19 @@ export function LinkProvider({ children }: { children: ReactNode }) {
     [incrementLinkCount],
   );
 
+  const deleteLink = useCallback(
+    (id: string) => {
+      const target = links.find((link) => link.id === id);
+      if (!target) return;
+
+      setLinks((prev) => prev.filter((link) => link.id !== id));
+      decrementLinkCount(target.folderId);
+    },
+    [links, decrementLinkCount],
+  );
+
   return (
-    <LinkContext.Provider value={{ links, addLink }}>
+    <LinkContext.Provider value={{ links, addLink, deleteLink }}>
       {children}
     </LinkContext.Provider>
   );
